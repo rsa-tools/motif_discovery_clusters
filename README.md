@@ -1,8 +1,8 @@
 Motif discovery within clusters of upstream sequences in plant genomes
 ======================================================================
 
-i. Summary
-----------
+Summary
+-------
 
 This protocol explains step-by-step how to discover DNA motifs in regulatory regions of clusters of co-expressed gene in plants. It also explains how to control the significance of the result, and how to annotate the discovered motifs with putative binding fators. It uses the plant-dedicated mirror of the Regulatory Sequence Analysis Tools (RSAT, <http://plants.rsat.eu>) but it can be used on any RSAT mirror.
 
@@ -17,7 +17,7 @@ Among plants, these strategies have so far been tested on the model *Arabidopsis
 
 -   Plant genomes are rich in repetitive elements (RE) distributed along the genome (5), which pose particular problems for motif discovery statistics (violation of the independence assumption).
 
--   Current genome assemblies range from 119.7Mb (*A.thaliana*) to 14.54Gb (*Triticum aestivum*). *Brachypodium distachyon*, a model species for grasses, is 271.9Mb. The quality of these assemblies and their RE content is also quite variable (see stats [here](http://rsat.eead.csic.es/plants/data/stats/).
+-   Current genome assemblies range from 119.7Mb (*A.thaliana*) to 14.54Gb (*Triticum aestivum*). *Brachypodium distachyon*, a model species for grasses, is 271.9Mb. The quality of these assemblies and their RE content is also quite variable (see stats [here](http://rsat.eead.csic.es/plants/data/stats/)).
 
 -   Upstream regions, defined by annotated gene coordinates, are also of variable length.
 
@@ -30,12 +30,11 @@ This protocol requires to dispose of:
 
 -   A computer with any Web browser installed.
 
--   A set of gene clusters from any of the species currently supported at RSAT::Plants ( <http://plants.rsat.eu>, see **Note **[1]). Here we will use three example clusters of maize genes, shown on **Table 2**, found to be co-expressed in 22 transcriptomes and enriched on some Gene Ontology terms according to their authors *(4)*. See **Note **[2]. **Table 3** counts the number of RNA-seq series available per taxa on database Gene Expression Omnibus <http://www.ncbi.nlm.nih.gov/geo>, and shows that plants currently represent ~10% of the datasets.
+-   A set of gene clusters from any of the species currently supported at RSAT::Plants ( <http://plants.rsat.eu>, see Note [1]). Here we will use three example clusters ... (Najla)
 
 3. Methods
 ----------
 
-<!-- This is the main section and should explain in detail the individual steps necessary to carry out the technique. Where possible, please simply list the steps in numerical order. For techniques that comprise a number of separate major procedures, please indicate these separate procedures in the introduction, and then subdivide section 3 into subheadings to cover each procedure (3.1, 3.2 etc). The steps in each subsection should then be numbered individually, renumbering  from number one. Do take great care to try to indicate any little "tricks" or nuances that help improve your method by referring to relevant "notes" in section 4 (see below). This sort of information rarely gets into the scientific literature. You may also find it useful to relate to some aspects of the theory in this section indicating the purpose of some of the major steps by cross-referencing to an appropriate “note”. Do not be tempted to get involved in the description of variations/alternatives to your technique in this section: this can be done in the "Notes" section. Stick to the basic procedure detailed in this section. This section must be comprehensive. Do not send the reader away to find information for a particular step in another reference. All relevant practical detail must be given in this section. -->
 The following protocol enumerates the steps required to discover DNA motifs, based on the over-representation of k-mers (oligonucleotides) and dyads (spaced pairs of oligonucleotides), in clusters of upstream sequences. The protocol comprises two stages, analyzing first co-expressed genes and then random clusters as a negative control (see **Note **[3]). Only after both stages have been completed it is possible to objectively estimate the relevance of the results.
 
 The time required for carrying out the following steps is approximately one hour.
