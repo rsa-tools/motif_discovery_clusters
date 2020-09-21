@@ -21,7 +21,7 @@ Among plants, these strategies have so far been tested on the model *Arabidopsis
 
 -   Upstream regions, defined by annotated gene coordinates, are also of variable length.
 
-This tutorial is step-by-step protocol for the task of discovering and annotating DNA motifs in clusters of upstream sequences for species supported on the RSAT::Plants server, which have been obtained mostly from Ensembl Plants (<http://plants.ensembl.org>), but also include data from the JGI Genome Portal (<http://genome.jgi.doe.gov>) and the National Institute of Agrobiological Sciences in Japan (<http://barleyflc.dna.affrc.go.jp/bexdb/>). In addition, RSAT::Plants integrates footprintDB (<http://floresta.eead.csic.es/footprintdb>), a collection of position-specific scoring matrices (PSSM) representing transcription factor binding motifs (TFBM), as well as their cognate binding proteins (6), which can be used to annotate discovered motifs and to predict potentially binding transcription factors.
+This tutorial is step-by-step protocol for the task of discovering and annotating DNA motifs in clusters of upstream sequences for species supported on the RSAT::Plants server, which have been obtained mostly from Ensembl Plants (<http://plants.ensembl.org>, 6), but also include data from the JGI Genome Portal (<http://genome.jgi.doe.gov>) and the National Institute of Agrobiological Sciences in Japan (<http://barleyflc.dna.affrc.go.jp/bexdb/>). In addition, RSAT::Plants integrates footprintDB (<http://floresta.eead.csic.es/footprintdb>), a collection of position-specific scoring matrices (PSSM) representing transcription factor binding motifs (TFBM), as well as their cognate binding proteins (7), which can be used to annotate discovered motifs and to predict potentially binding transcription factors.
 
 2. Materials
 ------------
@@ -103,7 +103,9 @@ The last stage of the protocol is the interpretation of results, which requires 
 
 ![Example histograms of significance](figures/example_sig.png)
 
-The figure shows two **distributions of motif significance**. The most significant motif produced by both *oligo-analysis* and *dyad-analysis* (black bar) is shown next to the significance of motifs discovered in random clusters (grey bars). The motif on the left is not more significant than those of random gene sets of the same size, and should not be considered a reliable prediction. In contrast, the motif on the right (E2F) clearly supersedes those of random clusters. For this reason, it can be considered a promising predictions. 
+The figure shows two **distributions of motif significance**. The most significant motif produced by both *oligo-analysis* and *dyad-analysis* (black bar) is shown next to the significance of motifs discovered in random clusters (grey bars). The motif on the left is not more significant than those of random gene sets of the same size, and should not be considered a reliable prediction. In contrast, the motif on the right (E2F) clearly supersedes those of random clusters. For this reason, it can be considered a promising prediction. 
+
+See the protocol in reference (8) for further ways of validating motifs enriched in clustered sequences.
 
 4. References
 -------------
@@ -118,9 +120,14 @@ The figure shows two **distributions of motif significance**. The most significa
 
 5. T Schmidt, J Heslop-Harrison (1998) Genomes, genes and junk: the large-scale organization of plant chromosomes. Trends in Plant Science 3: 195–199.
 
-6. A Sebastian, B Contreras Moreira (2014) footprintDB: a database of transcription factors with annotated cis elements and binding interfaces. Bioinformatics 30: 258–265.
+6. KL Howe, B Contreras-Moreira B, N De Silva, et al. (2019) Ensembl Genomes 2020-enabling non-vertebrate genomic research. Nucleic Acids Res. 48: D689–D695
 
-7. KL Howe, B Contreras-Moreira B, N De Silva, et al. (2019) Ensembl Genomes 2020-enabling non-vertebrate genomic research. Nucleic Acids Res. 48: D689–D695
+7. A Sebastian, B Contreras Moreira (2014) footprintDB: a database of transcription factors with annotated cis elements and binding interfaces. Bioinformatics 30: 258–265.
+
+8. B Contreras-Moreira, J Castro-Mondragon, C Rioualen, et al. (2016) RSAT::Plants: Motif Discovery within Clusters of Upstream Sequences in Plant Genomes. In Plant Synthetic Promoters: Methods and Protocols, edited by Hehl R. Methods in Molecular Biology, 1482:279-95
+
+
+
 
 5. Notes
 --------
@@ -129,7 +136,7 @@ The figure shows two **distributions of motif significance**. The most significa
 
 [2] Smaller clusters are left out of the analysis, as the statistical approaches in this protocol require at least ~10-15 sequences. 
 
-[3] A crucial parameter to evaluate the results of motif discovery is to estimate the rate of false positives (FP). RSAT programs compute a significance score, which is the minus log of the expected number of false positives (\(\text{e-value} = 10^{-\text{sig}}\)). For example, a motif associated with a significance of 1 should be considered as poorly significant, since on average we would expect \(10^{-1} = 0.1\) false positives, i.e. one FP every 10 random trials. In contrast, a significance of e.g. 16 is very promising, since on average such a result would be expected every \(10^{-16}\) random trials. However, the theoretical significance relies on the correctness of the background model (computed here as k-mer and dyad frequencies in the whole set of promoters). In some cases, sets of plant promoters can discard from the theoretical model, due to heterogeneity of the input (e.g. inclusion of repetitive sequences). The negative control consists in measuring the significance obtained by submitting a random selection of promoters from the organism of interest (maize in the example). Although each of these genes is likely to be regulated by one or more transcription factors (and its promoter should contain corresponding binding sites), in principle the random set as a whole should not be co-regulated, so that the elements would differ from gene to gene, and there should thus be no over-represented motif in their promoters.
+[3] A crucial parameter to evaluate the results of motif discovery is to estimate the rate of false positives (FP). RSAT programs compute a significance score, which is the minus log of the expected number of false positives. For example, a motif associated with a significance of 1 should be considered as poorly significant, since on average we would expect 0.1 false positives, i.e. one FP every 10 random trials. In contrast, a significance of e.g. 16 is very promising, since on average such a result would be expected every 10E-16 random trials. However, the theoretical significance relies on the correctness of the background model (computed here as k-mer and dyad frequencies in the whole set of promoters). In some cases, sets of plant promoters can discard from the theoretical model, due to heterogeneity of the input (e.g. inclusion of repetitive sequences). The negative control consists in measuring the significance obtained by submitting a random selection of promoters from the organism of interest (maize in the example). Although each of these genes is likely to be regulated by one or more transcription factors (and its promoter should contain corresponding binding sites), in principle the random set as a whole should not be co-regulated, so that the elements would differ from gene to gene, and there should thus be no over-represented motif in their promoters.
 
 [4] Should the connection to the server interrupt it might be safer to go back and choose 'email' as delivery option.
 
@@ -137,14 +144,8 @@ The figure shows two **distributions of motif significance**. The most significa
 
 [6] This program is generally relevant when analyzing sets containing a large number of sequences such as ChIP-seq peaks or genome-wide promoter sets.
 
-[7] The option *'Origin'* indicates the reference position relative to each sequence (start, center or end). When this option is set to 'end', the coordinates are computed relative to the end of the sequence, with negative values indicating upstream location. The option *'Offset'* enables to shift the reference point by a given number. For the current example, setting the offset to -200 will give coordinates from -1000 to +200, the 0 corresponding to the TSS.
+[7] The option *'Origin'* indicates the reference position relative to each sequence (start, center or end). When this option is set to 'end', the coordinates are computed relative to the end of the sequence, with negative values indicating upstream location. The option *'Offset'* enables to shift the reference point by a given number. 
 
 [8] Plant transcription databases are unfortunately still very fragmentary, so one might be tempted to check more complete collections such as *footprintDB* or *JASPAR core all*. However, the results should be interpreted with caution, because there is no conservation of cis-regulation between Plants and other Kingdoms of the tree of life.
 
-[9] Clearly, more than one random cluster should be evaluated, as suggested on **Figure 2**, where the results of up to 50 random groups are displayed next to the clusters of *(4)*.
-
-[10] Orthologues reported are annotated in Ensembl Compara, generated by a pipeline where maximum likelihood phylogenetic gene trees play a central role. These gene trees, reconciled with their species tree, have their internal nodes annotated to distinguish duplication or speciation events, and thus support the annotation of orthologous and paralogous genes, which can be part of complex one-to-many and many-to-many relations. Adapted from: <http://www.ensembl.org/info/genome/compara/homology_method.html>.
-
-[11] This will permute the columns of the input PWMs producing matrices with the same information content but different consensus.
-
-[12] 'Ncor' is the relative width-normalized Pearson correlation when aligning PWMs with *matrix-scan*. This normalized score prevents spurious matches that would cover only a subset of the aligned matrices (e.g. matches between the last column of the query matrix and the first column of the reference matrix, or matches of a very small motif against a large one).
+[9] Clearly, more than one random cluster should be evaluated, as suggested on **Figure 1**, where the results of up to 50 random groups are displayed.
