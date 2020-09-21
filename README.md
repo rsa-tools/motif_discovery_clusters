@@ -1,65 +1,31 @@
-<!-- md_document:
-    variant: markdown_github -->
-<!-- 
-Esto significa que falta una coma en una referencia:
+Motif discovery within clusters of upstream sequences in plant genomes
+======================================================================
 
-pandoc-citeproc: "stdin" (line 7267, column 2):
-unexpected "A"
-expecting "c", "C", "p", "P", "s" or "S"
-pandoc: Error running filter /usr/lib/rstudio/bin/pandoc/pandoc-citeproc
--->
-RSAT::Plants: motif discovery within clusters of upstream sequences in plant genomes
-====================================================================================
+i. Summary
+----------
 
-\*\*Bruno Contreras-Moreira (1, 2)\*, Jaime Castro-Mondragon (3,4), Claire Rioualen (3,4), Carlos P. Cantalapiedra (1) and Jacques van Helden (3,4)\*\*
+This protocol explains step-by-step how to discover DNA motifs in regulatory regions of clusters of co-expressed gene in plants. It also explains how to control the significance of the result, and how to annotate the discovered motifs with putative binding fators. It uses the plant-dedicated mirror of the Regulatory Sequence Analysis Tools (RSAT, <http://plants.rsat.eu>) but it can be used on any RSAT mirror.
 
-1.  Estación Experimental de Aula Dei-CSIC, Av. Montañana 1.005, 50059 Zaragoza, Spain.
-2.  Fundación ARAID, calle María de Luna 11, 50018 Zaragoza, Spain.
-3.  INSERM, U1090 TAGC, Marseille, F-13288, France.
-4.  Aix Marseille University, U1090 TAGC, Marseille, F-13288, France.
-
--   Corresponding author: Bruno Contreras Moreira <bcontreras@eead.csic.es>
-
-i. Summary/Abstract
--------------------
-
-<!--*In one or two paragraphs, please write an overview of the method described.*-->
-The plant-dedicated mirror of the Regulatory Sequence Analysis Tools (RSAT, <http://plants.rsat.eu>) offers specialized options for researchers dealing with plant transcriptional regulation. The web site contains whole-sequenced species regularly updated from Ensembl Plants and other sources (currently 40), and supports an array of tasks frequently required for the analysis of regulatory sequences, such as retrieving upstream sequences, motif discovery, motif comparison, pattern matching. RSAT::Plants also integrates the footprintDB collection of DNA motifs. This protocol explains step-by-step how to discover DNA motifs in regulatory regions of clusters of co-expressed gene in plants. It also explains how to control the significance of the result, and how to annotate the discovered motifs with putative binding fators.
-
-### ii. Key Words
-
-<!--*Please include 5-10 key words for referencing by electronic databases and search engines.*-->
--   co-expression, DNA motif, position-weight matrix, upstream sequence, cluster
-
-<!--JvH: do we still have the GO part ? If not, suppress gene ontology term from keywords. -->
 1. Introduction
 ---------------
 
-<!--This section should contain a summary of, and the outline of any theory to, the method that you’re are describing. It should also outline the major procedures involved in the protocol.-->
-Transcriptome data (microarrays, RNA-seq) have been extensively used as a proxy for genetic regulation in many organisms, as the analysis of genome-wide profiles of gene transcription under different treatments uncovers clusters of genes with correlated behaviours, which may result from direct or indirect co-regulation. A classical application of this approach was done by Beer and co-workers *(1)* with yeast microarray data sets obtained in a variety of experimental conditions. In that experiment, expression data-mining was demonstrated to be an effective strategy for finding regulons, groups of genes that share regulatory mechanisms and functional annotations.
+Transcriptome data (microarrays, RNA-seq) have been extensively used as a proxy for genetic regulation in many organisms, as the analysis of genome-wide profiles of gene transcription under different treatments uncovers clusters of genes with correlated behaviours, which may result from direct or indirect co-regulation. A classical application of this approach was done by Beer and co-workers (1) with yeast microarray data sets obtained in a variety of experimental conditions. In that experiment, expression data-mining was demonstrated to be an effective strategy for finding regulons, groups of genes that share regulatory mechanisms and functional annotations.
 
-Other studies have unveiled that the outcome of these approaches largely depends on the genomic background of the species under study. For instance, Sand and others *(2)* reported that the significance of DNA motifs discovered in *Saccharomyces cerevisiae* promoters is much higher for regulons than for random gene sets of the same sizes, but for human promoters the signal-to-noise ratio is almost null, because random gene sets give highly significant motifs due to heterogeneities in promoter compositions and biases due to repetitive elements. For metazoans, it is thus a real challenge to distinguish *bona fide* motifs from noise *(2)*. These observations suggest that motif discovery on sequence clusters faces intrinsic properties of the genomes under study, regardless of the software used for the task.
+Other studies have unveiled that the outcome of these approaches largely depends on the genomic background of the species under study. For instance, Sand and others (2) reported that the significance of DNA motifs discovered in *Saccharomyces cerevisiae* promoters is much higher for regulons than for random gene sets of the same sizes, but for human promoters the signal-to-noise ratio is almost null, because random gene sets give highly significant motifs due to heterogeneities in promoter compositions and biases due to repetitive elements. For metazoans, it is thus a real challenge to distinguish *bona fide* motifs from noise (2). These observations suggest that motif discovery on sequence clusters faces intrinsic properties of the genomes under study, regardless of the software used for the task.
 
-Among plants, these strategies have so far been tested on the model *Arabidopsis thaliana*, and they have been succesfully applied to the identification of novel cis regulatory elements validated with synthetic promoters *(3)*. Yet, with the exception of this model, this sort of experiments have not been possible in plants until recently. In spite of this, the growing list of available plant genomes encourages these analyses in combination with expression profiles obtained from either microarray or RNAseq data sets, as in the recent work of Yu and collaborators *(4)*, provided that these factors are considered:
+Among plants, these strategies have so far been tested on the model *Arabidopsis thaliana*, and they have been succesfully applied to the identification of novel cis regulatory elements validated with synthetic promoters (3). Yet, with the exception of this model, this sort of experiments have not been possible in plants until recently. In spite of this, the growing list of available plant genomes encourages these analyses in combination with expression profiles, as in the recent work of Yu and collaborators (4), provided that these factors are considered:
 
--   Plant genomes are rich in repetitive elements (RE) distributed along the genome *(5)*, which pose particular problems for motif discovery statistics (violation of the independence assumption).
+-   Plant genomes are rich in repetitive elements (RE) distributed along the genome (5), which pose particular problems for motif discovery statistics (violation of the independence assumption).
 
--   Current genome assemblies range from 119.7Mb (*A.thaliana*) to 6.48Gb (*Triticum aestivum*). *Brachypodium distachyon*, a model species for grasses, is 271.9Mb. The quality of these assemblies and their RE content is also quite variable, as shown on **Figure 1** and **Table 1**.
+-   Current genome assemblies range from 119.7Mb (*A.thaliana*) to 14.54Gb (*Triticum aestivum*). *Brachypodium distachyon*, a model species for grasses, is 271.9Mb. The quality of these assemblies and their RE content is also quite variable (see stats [here](http://rsat.eead.csic.es/plants/data/stats/).
 
--   Upstream regions, defined by annotated gene coordinates, are also of variable length, going from 1,123b on average in *A.thaliana* to 1,856b on *Aegilops tauschii* (see **Table 1**).
+-   Upstream regions, defined by annotated gene coordinates, are also of variable length.
 
-This chapter presents a step-by-step protocol for the task of discovering and annotating DNA motifs in clusters of upstream sequences for species supported on the RSAT::Plants, which have been obtained mostly from Ensembl Plants (<http://plants.ensembl.org>), but also include data from the JGI Genome Portal (<http://genome.jgi.doe.gov>) and the National Institute of Agrobiological Sciences in Japan (<http://barleyflc.dna.affrc.go.jp/bexdb/>). In addition, RSAT::Plants integrates footprintDB (<http://floresta.eead.csic.es/footprintdb>), a collection of position-specific scoring matrices (PSSM) representing transcription factor binding motifs (TFBM), as well as their cognate binding proteins *(6)*, which can be used to annotate discovered motifs and to predict potentially binding transcription factors, as illustrated in the chapter by Contreras-Moreira and Sebastián of this book.
-
-Discovering regulatory elements within natural genomic sequences is certainly an important scientific goal on its own, but can also be part of the design and validation of synthetic promoters. We envisage at least two applications in this context:
-
--   The characterization of promoters of known expression properties, which can then be used to engineer the expression of genes of interest.
-
--   The validation of engineered promoters in order to make sure that they contain the expected regulatory elements, which might be natural or engineered depending on the application.
+This tutorial is step-by-step protocol for the task of discovering and annotating DNA motifs in clusters of upstream sequences for species supported on the RSAT::Plants server, which have been obtained mostly from Ensembl Plants (<http://plants.ensembl.org>), but also include data from the JGI Genome Portal (<http://genome.jgi.doe.gov>) and the National Institute of Agrobiological Sciences in Japan (<http://barleyflc.dna.affrc.go.jp/bexdb/>). In addition, RSAT::Plants integrates footprintDB (<http://floresta.eead.csic.es/footprintdb>), a collection of position-specific scoring matrices (PSSM) representing transcription factor binding motifs (TFBM), as well as their cognate binding proteins (6), which can be used to annotate discovered motifs and to predict potentially binding transcription factors.
 
 2. Materials
 ------------
 
-<!--This section should list the composition of all buffers, media, solutions, and specialist equipment etc., that are necessary for carrying out the method described in section 3. -->
 This protocol requires to dispose of:
 
 -   A computer with any Web browser installed.
@@ -181,147 +147,13 @@ The last stage of the protocol is the interpretation of results, which requires 
 
 -   The **distributions of scanning scores** (C,G,K) show to which extent motif matches in upstream sequences, including promoters of *S.bicolor* orthologues (dark boxes), depart from matches of permuted matrices (lighter boxes), used here as negative controls. In the example, the results for E2F motifs confirm their relevance, while the contrary is observed for ABI4. WRI1 results are somewhat in between.
 
-<!-- Jaime:  If the scanning score is the result of the log ratio between the probability of the sequence given the matrix and the probability given the BG model, then we should use the p-value, because the score is relative to the matrix length. May be a distribution of -log10(p-values) will give us a clear interpretation.  -->
 -   The **distributions of scores in footprintDB** (D,H,L) describe how similar are the discovered motifs when compared to motifs (PWMs) annotated in footprintDB. Similarities are measured by the \(\text{maxNcor}\) score (see **Note **[12]). As to the random clusters, in each example 50 sets of motifs are compared to tootprintDB. The results indicate that a comparison to a motif repository, while essential for annotation purposes, is not particularly helpful in order to distinguish relevant expression-supported motifs from PWMs constructed in random sequence clusters. Indeed, in two out of three examples random clusters produce motifs that have matches in footprintDB with superior Ncor scores than the motifs experimentally confirmed by Yu et al *(4)*.
 
-<!-- JAime:  As the Figure 2 (D,H,L) show the results of the 50 random gene clusters, each time there is a set of discovered motifs that will be compared vs FootprintDB. In the D, the maxNcor in the random clusters are slighltly lower than the real cluster, this could mean the motifs found in the real cluster are highly similar to those in FootprintDB thus producing a very high Ncor (almost 1.0). However, if we take the max, in the random cluster we also can find real motif that are available in FoorptinDB giving a maxNcor even better than those motifs found in the real clusters. For example in the E2F cluster, the maxNcor in the motifs found is around 0.6 whilst in their random clusters the highest is almost 1. This does not mean that motifs in random clusters are better but that motifs in clusters are highly similar to other motifs in FootprintDB. May be we should compare the random clusters vs the motifs matching those ones foind in the real clusters.-->
 4. Notes
 --------
 
-<!--As we all know, even the simplest techniques go wrong from time to time. Would you therefore indicate any major problems or faults that can occur with your technique? Try to indicate the major sources of problems and how they can be identified and overcome. With reference to related techniques, any variations of the technique that you have described should also be made in this section, as well as--where relevant--an indication of the sensitivity of the method, timescale for the singled technique, etc. This "Notes" section is a hallmark of this series and has been singled out for praise by a number of reviewers. Please try and make this section as extensive as possible by putting on paper all of your various experiences with the technique. Each ‘Note’ should be cross-referenced with the ‘Materials’ and ‘Methods’ sections, e.g. (see Note 1) -->
-<!-- To be cut-pasted from the end of the Word document -->
-<!--Jacques: I suppressed the hard-coded numbering of the note because I inserted some notes-->
-<!-- JAime:  We should menton how much time should take the entire protocol. -->
-5. References
+4. References
 -------------
-
-<!-- To be cut-pasted from the end of the Word document -->
-Acknowledgements
-----------------
-
-This work was funded in part by Fundación ARAID and by the Enseignants-Chercheurs invités program of Aix-Marseille Université (to BCM). CR was supported by the France Génomique National infrastructure, funded as part of the « Investissements d’Avenir » program managed by the Agence Nationale pour la Recherche (contract ANR-10-INBS-09)
-
-Figure captions
----------------
-
-**Figure 1.** Genome size of some plant species annotated in RSAT::Plants, showing the fractions of repeat-masked segments and "N" letters (uncharacterized nucleotides). The full dataset is available at <http://plants.rsat.eu/data/stats>. Most genomes have been downloaded from Ensembl Plants *(7)*. The yeast genome (*S.cerevisiae*) is plotted as a reference model organism.
-
-**Figure 2.** Summary of motif discovery results with three clusters of maize genes (ABI4, top; E2F, middle; WRI1, bottom) used along the protocol, see Table 2. Dark bars correspond to clusters of co-expressed genes, grey bars to 50 random clusters of genes drawn from the maize genome. Maximum significance of *oligo-analysis* (A, E, I) and *dyad-analysis* (B, F, J) motifs. The sequence logo of the first motif reported by each algorithm is shown, indicating the number of sites used to compute the logo and the \(\text{Ncor}\) score of the comparison to the expected motif (see **Note 11**)<!-- JvH: this note needs to be numbered manually at the end-->. Panels C,G,K show the scores of discovered motifs when scanned back to the original maize upstream sequences and sequences from orthologous genes in *Sorghum bicolor*. Here dark bars are the reported PWMs, while the grey bars correspond to permuted PWMs. Panels D,H,L show the \(\text{Ncor}\) scores of discovered motifs when compared to annotated PWMs in footprintDB. A full report including cluster MYB59 can be browsed at <http://plants.rsat.eu/data/chapter_expression_clusters> .
-
-<!-- I (JvH) comment the Figures, which should not be included in the final manuscript 
-
-################################################################
-## Figures
-
-
-
-
-![**Figure 1**](figures/figure1.png)
-
-![**Figure 2**](figures/figure2.png)
-
-<!-- END OF FIGURE COMMENTING-->
-Table captions
---------------
-
-**Table 1.** Features of some plant genomes in RSAT::Plants, taken from <http://plants.rsat.eu/data/stats>. Each ID concatenates the organism, the assembly version and the source. Most genome IDs add to the end the Ensembl Plants release number. For instance, Arabidopsis\_thaliana.TAIR10.29, corresponds to *A.thaliana* assembly 10 from TAIR <https://www.arabidopsis.org>, annotated in release 29 of Ensembl Plants. The yeast genome (*S.cerevisiae*) is listed as a reference.
-
-**Table 2.** Clusters of maize (*Zea mays*) genes used along the protocol, extracted from the published work of Yu et al *(4)*. Experimentally verified regulatory motifs of these clusters are shown.
-
-**Table 3.** Number of high throughput sequencing expression data sets available at Gene Expression Omnibus <http://www.ncbi.nlm.nih.gov/geo> as of January, 2016.
-
-**Table 4.** Top hexamers and dyads enriched on the E2F cluster of maize usptream sequences and a random cluster of the same size. Abbreviations: exp\_freq=expected relative frequency, occ=observed occurrences, exp\_occ=expected occurrences, occ\_P=occurrence probability (binomial), occ\_E=E-value for occurrences, occ\_sig=occurrence significance.
-
-Tables
-------
-
-#### Table 1
-
-| Organism / assembly ID                                    |  Genome size (Mb)|    Contigs|    %N|  % repeat-masked|  Gene models|  Mean upstream length|
-|:----------------------------------------------------------|-----------------:|----------:|-----:|----------------:|------------:|---------------------:|
-| Aegilops\_tauschii.ASM34733v1.29                          |             3,314|    429,892|  18.8|             10.2|       37,035|                 1,856|
-| Amborella\_trichopoda.AMTR1.0.29                          |               706|      5,745|   5.4|             12.0|       28,721|                 1,832|
-| Arabidopsis\_lyrata.v.1.0.29                              |               207|        695|  11.1|             21.8|       32,667|                 1,411|
-| Arabidopsis\_thaliana.TAIR10.29                           |               120|          7|   0.2|             19.3|       33,602|                 1,123|
-| Brachypodium\_distachyon.v1.0.29                          |               272|         83|   0.4|             20.1|       26,552|                 1,723|
-| Brassica\_oleracea.v2.1.29                                |               489|     32,928|   8.8|             11.0|       59,225|                 1,628|
-| Brassica\_rapa.IVFCAASv1.29                               |               284|     40,367|   3.8|             13.9|       42,846|                 1,622|
-| Chlamydomonas\_reinhardtii.v3.1.29                        |               120|      1,558|  12.5|             11.1|       14,487|                 1,148|
-| Cyanidioschyzon\_merolae.ASM9120v1.29                     |                17|         22|   0.0|              2.2|        5,106|                   804|
-| Escherichia\_coli\_str\_k\_12\_substr\_mg1655.ASM584v2.29 |                 5|          1|   0.0|              0.6|        4,497|                   129|
-| Glycine\_max.Wm82.a2.v1.JGI                               |               978|      1,190|   2.4|             43.1|       56,044|                 1,806|
-| Hordeum\_vulgare.082214v1.29                              |             4,045|     19,705|  66.8|              9.0|       26,066|                 1,769|
-| Hordeum\_vulgare.HarunaNijo.20151026.NIAS                 |             2,006|  1,712,261|  11.3|             50.7|       51,249|                   804|
-| Leersia\_perrieri.Lperr\_V1.4.29                          |               267|         12|   0.4|             31.3|       30,615|                 1,629|
-| Medicago\_truncatula.MedtrA17\_4.0.29                     |               413|      2,186|   5.5|             25.3|       54,073|                 1,678|
-| Musa\_acuminata.MA1.29                                    |               473|         12|  17.4|              9.6|       37,579|                 1,469|
-| Oryza\_indica.ASM465v1.29                                 |               427|     10,490|   3.8|              7.5|       88,438|                 1,512|
-| Oryza\_longistaminata.O\_longistaminata\_v1.0.30          |               326|     60,198|   9.8|             24.1|       31,686|                 1,566|
-| Oryza\_sativa.IRGSP-1.0.29                                |               374|         61|   0.0|             40.5|       91,080|                 1,444|
-| Ostreococcus\_lucimarinus.ASM9206v1.29                    |                13|         21|   0.0|             14.7|        7,640|                   510|
-| Physcomitrella\_patens.ASM242v1.29                        |               480|      2,106|   5.4|             47.1|       32,273|                 1,607|
-| Populus\_trichocarpa.JGI2.0.29                            |               417|      2,518|   3.2|             32.5|       41,377|                 1,794|
-| Prunus\_persica.Prupe1\_0.29                              |               227|        202|   1.2|             16.1|       29,499|                 1,635|
-| Saccharomyces\_cerevisiae.R64-1-1.29                      |                12|         17|   0.0|              6.4|        7,126|                   423|
-| Selaginella\_moellendorffii.v1.0.29                       |               213|        759|   1.9|             36.9|       34,888|                 1,168|
-| Setaria\_italica.JGIv2.0.29                               |               406|        336|   1.2|              4.8|       35,471|                 1,673|
-| Solanum\_lycopersicum.SL2.50.29                           |               824|      3,144|  10.4|             20.1|       38,735|                 1,724|
-| Solanum\_tuberosum.SolTub\_3.0.29                         |               811|         13|  15.8|             39.1|       42,974|                 1,763|
-| Sorghum\_bicolor.Sorbi1.29                                |               738|      3,304|   5.5|             63.2|       34,567|                 1,773|
-| Theobroma\_cacao.Theobroma\_cacao\_20110822.29            |               346|        711|   4.4|             20.9|       29,188|                 1,253|
-| Triticum\_aestivum.IWGSC1.0+popseq.29                     |             6,483|    317,977|   3.3|             35.6|      112,496|                 1,391|
-| Triticum\_urartu.ASM34745v1.29                            |             3,747|    499,222|  19.7|              4.4|       37,604|                 1,806|
-| Vitis\_vinifera.IGGP\_12x.29                              |               486|         33|   3.3|             39.9|       29,971|                 1,728|
-| Zea\_mays.AGPv3.29                                        |             2,068|        523|   0.6|             78.2|       39,625|                 1,829|
-
-#### Table 2
-
-| Cluster name | Confirmed motif | Number of sequences |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     Gene IDs                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-|:------------:|:---------------:|:-------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|     ABI4     |   GCGCRSGCGGSC  |          16         |                                                                                                                                                                                                                                                                                                                                                                           GRMZM2G025062 <br>GRMZM2G053503 <br>GRMZM2G069082 <br>GRMZM2G069126 <br>GRMZM2G069146 <br>GRMZM2G076896 <br>GRMZM2G081892 <br>GRMZM2G124011 <br>GRMZM2G129674 <br>GRMZM2G142179 <br>GRMZM2G169654 <br>GRMZM2G172936 <br>GRMZM2G173771 <br>GRMZM2G174347 <br>GRMZM2G175525 <br>GRMZM2G421033                                                                                                                                                                                                                                                                                                                                                                           |
-|      E2F     |    TTCCCGCCA    |          18         |                                                                                                                                                                                                                                                                                                                                                       AC197146.3\_FG001 <br>GRMZM2G017081 <br>GRMZM2G021069 <br>GRMZM2G037700 <br>GRMZM2G057571 <br>GRMZM2G062333 <br>GRMZM2G065205 <br>GRMZM2G066101 <br>GRMZM2G075978 <br>GRMZM2G100639 <br>GRMZM2G112074 <br>GRMZM2G117238 <br>GRMZM2G130351 <br>GRMZM2G139894 <br>GRMZM2G154267 <br>GRMZM2G162445 <br>GRMZM2G327032 <br>GRMZM2G450055                                                                                                                                                                                                                                                                                                                                                       |
-|     WRI1     |    CGGCGGCGS    |          56         | AC210013.4\_FG019 <br>GRMZM2G008430 <br>GRMZM2G009968 <br>GRMZM2G010435 <br>GRMZM2G010599 <br>GRMZM2G014444 <br>GRMZM2G015097 <br>GRMZM2G017966 <br>GRMZM2G022019 <br>GRMZM2G027232 <br>GRMZM2G028110 <br>GRMZM2G035017 <br>GRMZM2G041238 <br>GRMZM2G045818 <br>GRMZM2G047727 <br>GRMZM2G048703 <br>GRMZM2G064807 <br>GRMZM2G068745 <br>GRMZM2G074300 <br>GRMZM2G076435 <br>GRMZM2G078779 <br>GRMZM2G078985 <br>GRMZM2G080608 <br>GRMZM2G092663 <br>GRMZM2G096165 <br>GRMZM2G098957 <br>GRMZM2G107336 <br>GRMZM2G108348 <br>GRMZM2G111987 <br>GRMZM2G115265 <br>GRMZM2G119865 <br>GRMZM2G122871 <br>GRMZM2G126603 <br>GRMZM2G126928 <br>GRMZM2G132095 <br>GRMZM2G140799 <br>GRMZM2G148744 <br>GRMZM2G150434 <br>GRMZM2G151252 <br>GRMZM2G152599 <br>GRMZM2G170262 <br>GRMZM2G181336 <br>GRMZM2G311914 <br>GRMZM2G312521 <br>GRMZM2G322413 <br>GRMZM2G325606 <br>GRMZM2G343543 <br>GRMZM2G353785 <br>GRMZM2G409407 <br>GRMZM2G439201 <br>GRMZM5G823135 <br>GRMZM5G827266 <br>GRMZM5G831142 <br>GRMZM5G835323 <br>GRMZM5G870606 <br>GRMZM5G882378 |
-
-#### Table 3
-
-<!-- Query
-((("metazoa"[Organism] AND "expression profiling by high throughput sequencing"[DataSet Type]) AND "gse"[Entry Type])
--->
-|            Taxon           |  GEO RNA-seq series|
-|:--------------------------:|-------------------:|
-|           Metazoa          |                4869|
-|       *Homo sapiens*       |                1911|
-|            Fungi           |                 398|
-| *Saccharomyces cerevisiae* |                 167|
-|        Viridiplantae       |                 649|
-|   *Arabidopsis thaliana*   |                 235|
-|         *Zea mays*         |                  62|
-|       *Oryza sativa*       |                  51|
-|          Bacteria          |                 415|
-|           Archaea          |                  12|
-|            Total           |                6378|
-
-<!-- 
-| _Mus musculus_ | 2131 |
-| _Drosophila melanogaster_ | 281  | 
-| _Caenorhabditis elegans_ | 106 |
--->
-#### Table 4
-
-| cluster | type    | motif      | exp\_freq | occ | exp\_occ | occ\_P  | occ\_E  | occ\_sig |
-|---------|---------|------------|-----------|-----|----------|---------|---------|----------|
-| E2F     | hexamer | gcggga     | 0.00046   | 37  | 6.65     | 3.1e-16 | 6.5e-13 | 12.19    |
-| E2F     | hexamer | cgggaa     | 0.00031   | 28  | 4.55     | 1.1e-13 | 2.2e-10 | 9.66     |
-| E2F     | hexamer | cccgcc     | 0.00072   | 36  | 10.49    | 5.7e-10 | 1.2e-06 | 5.93     |
-| random  | hexamer | cttcga     | 0.00032   | 15  | 4.78     | 0.00014 | 2.9e-01 | 0.53     |
-| random  | hexamer | ccaaaa     | 0.00083   | 27  | 12.16    | 0.00016 | 3.4e-01 | 0.47     |
-| random  | hexamer | aacacc     | 0.00046   | 18  | 6.78     | 0.00025 | 5.2e-01 | 0.28     |
-| E2F     | dyad    | gcgn{1}gaa | 0.00036   | 31  | 5.21     | 1.3e-14 | 2.6e-10 | 9.58     |
-| E2F     | dyad    | ggcn{1}gga | 0.00062   | 40  | 8.79     | 1.3e-14 | 2.7e-10 | 9.57     |
-| E2F     | dyad    | ggcn{2}gaa | 0.00042   | 27  | 6.00     | 2.9e-10 | 6.1e-06 | 5.22     |
-| random  | dyad    | accn{8}aaa | 0.00055   | 23  | 7.66     | 5.7e-06 | 1.2e-01 | 0.91     |
-| random  | dyad    | aatn{3}aaa | 0.00126   | 39  | 17.95    | 1.1e-05 | 2.4e-01 | 0.62     |
-| random  | dyad    | cttn{2}gac | 0.00027   | 15  | 3.87     | 1.4e-05 | 2.9e-01 | 0.53     |
 
 1. MA Beer, S Tavazoie (2004) Predicting gene expression from sequence. Cell 117: 185–198.
 
@@ -335,7 +167,10 @@ Tables
 
 6. A Sebastian, B Contreras Moreira (2014) footprintDB: a database of transcription factors with annotated cis elements and binding interfaces. Bioinformatics 30: 258–265.
 
-7. PJ Kersey, JE Allen, I Armean, et al. (2016) Ensembl Genomes 2016: more genomes, more complexity. Nucleic Acids Res. 44: D574–580.
+7. KL Howe, B Contreras-Moreira B, N De Silva, et al. (2019) Ensembl Genomes 2020-enabling non-vertebrate genomic research. Nucleic Acids Res. 48: D689–D695
+
+5. Notes
+--------
 
 [1] As gene models can change from one assembly to another it is important to use the right assembly version, which is indicated for each genome on **Table 1**. If the assembly of interest it not available on RSAT::Plant server, please contact the first author.
 
