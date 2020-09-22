@@ -110,21 +110,21 @@ See the protocol in reference (8) for further ways of validating motifs enriched
 4. References
 -------------
 
-1. MA Beer, S Tavazoie (2004) Predicting gene expression from sequence. Cell 117: 185–198.
+1. MA Beer, S Tavazoie (2004) Predicting gene expression from sequence. Cell 117: 185–198. https://pubmed.ncbi.nlm.nih.gov/15084257
 
-2. TJ Sand O., van Helden J. (2008) Evaluating the prediction of cis-acting regulatory elements in genome sequences, In: Frishman, D. and Valencia, A. (eds.) Modern genome annotation, pp. 55–89 Springer.
+2. TJ Sand O., van Helden J. (2008) Evaluating the prediction of cis-acting regulatory elements in genome sequences, In: Frishman, D. and Valencia, A. (eds.) Modern genome annotation, pp. 55–89 Springer. https://link.springer.com/chapter/10.1007/978-3-211-75123-7_4
 
-3. J Koschmann, F Machens, M Becker, J Niemeyer, J Schulze, L Bulow, DJ Stahl, R Hehl (2012) Integration of bioinformatics and synthetic promoters leads to the discovery of novel elicitor-responsive cis-regulatory sequences in Arabidopsis. Plant Physiol. 160: 178–191.
+3. J Koschmann, F Machens, M Becker, J Niemeyer, J Schulze, L Bulow, DJ Stahl, R Hehl (2012) Integration of bioinformatics and synthetic promoters leads to the discovery of novel elicitor-responsive cis-regulatory sequences in Arabidopsis. Plant Physiol. 160: 178–191. http://www.plantphysiol.org/content/160/1/178
 
-4. CP Yu, SC Chen, YM Chang, WY Liu, HH Lin, JJ Lin, HJ Chen, YJ Lu, YH Wu, MY Lu, CH Lu, AC Shih, MS Ku, SH Shiu, SH Wu, WH Li (2015) Transcriptome dynamics of developing maize leaves and genomewide prediction of cis elements and their cognate transcription factors. Proc. Natl. Acad. Sci. U.S.A. 112: E2477–2486.
+4. CP Yu, SC Chen, YM Chang, WY Liu, HH Lin, JJ Lin, HJ Chen, YJ Lu, YH Wu, MY Lu, CH Lu, AC Shih, MS Ku, SH Shiu, SH Wu, WH Li (2015) Transcriptome dynamics of developing maize leaves and genomewide prediction of cis elements and their cognate transcription factors. Proc. Natl. Acad. Sci. U.S.A. 112: E2477–2486. https://www.pnas.org/content/112/19/E2477
 
-5. T Schmidt, J Heslop-Harrison (1998) Genomes, genes and junk: the large-scale organization of plant chromosomes. Trends in Plant Science 3: 195–199.
+5. T Schmidt, J Heslop-Harrison (1998) Genomes, genes and junk: the large-scale organization of plant chromosomes. Trends in Plant Science 3: 195–199. https://doi.org/10.1016/S1360-1385(98)01223-0
 
-6. KL Howe, B Contreras-Moreira B, N De Silva, et al. (2019) Ensembl Genomes 2020-enabling non-vertebrate genomic research. Nucleic Acids Res. 48: D689–D695
+6. KL Howe, B Contreras-Moreira B, N De Silva, et al. (2019) Ensembl Genomes 2020-enabling non-vertebrate genomic research. Nucleic Acids Res. 48: D689–D695. https://pubmed.ncbi.nlm.nih.gov/31598706
 
-7. A Sebastian, B Contreras Moreira (2014) footprintDB: a database of transcription factors with annotated cis elements and binding interfaces. Bioinformatics 30: 258–265.
+7. A Sebastian, B Contreras Moreira (2014) footprintDB: a database of transcription factors with annotated cis elements and binding interfaces. Bioinformatics 30: 258–265. https://pubmed.ncbi.nlm.nih.gov/24234003
 
-8. B Contreras-Moreira, J Castro-Mondragon, C Rioualen, et al. (2016) RSAT::Plants: Motif Discovery within Clusters of Upstream Sequences in Plant Genomes. In Plant Synthetic Promoters: Methods and Protocols, edited by Hehl R. Methods in Molecular Biology, 1482:279-95
+8. B Contreras-Moreira, J Castro-Mondragon, C Rioualen, et al. (2016) RSAT::Plants: Motif Discovery within Clusters of Upstream Sequences in Plant Genomes. In Plant Synthetic Promoters: Methods and Protocols, edited by Hehl R. Methods in Molecular Biology, 1482:279-95. https://pubmed.ncbi.nlm.nih.gov/27557774
 
 
 
