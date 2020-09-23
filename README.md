@@ -1,13 +1,19 @@
 Motif discovery within clusters of upstream sequences in plant genomes
 ======================================================================
 
-Summary
--------
+- [Introduction](#introduction)
+- [Materials](#materials)
+- [Methods](#methods)
+	- [Collecting the full set of promoters for the genome of interest](#collecting-the-full-set-of-promoters-for-the-genome-of-interest)
+	- [Analyzing upstream sequences of co-expressed genes](#analyzing-upstream-sequences-of-co-expressed-genes)
+	- [Negative control: random groups of genes](#negative-control--random-groups-of-genes)
+	- [Interpretation of results](#interpretation-of-results)
+- [References](#references)
+ [Notes](#notes)
 
 This protocol explains step-by-step how to discover DNA motifs in regulatory regions of clusters of co-expressed gene in plants. It also explains how to control the significance of the result, and how to annotate the discovered motifs with putative binding fators. It uses the plant-dedicated mirror of the Regulatory Sequence Analysis Tools (RSAT, <http://plants.rsat.eu>) but it can be used on any RSAT mirror.
 
-1. Introduction
----------------
+# Introduction
 
 Transcriptome data (microarrays, RNA-seq) have been extensively used as a proxy for genetic regulation in many organisms, as the analysis of genome-wide profiles of gene transcription under different treatments uncovers clusters of genes with correlated behaviours, which may result from direct or indirect co-regulation. A classical application of this approach was done by Beer and co-workers (1) with yeast microarray data sets obtained in a variety of experimental conditions. In that experiment, expression data-mining was demonstrated to be an effective strategy for finding regulons, groups of genes that share regulatory mechanisms and functional annotations.
 
@@ -23,8 +29,7 @@ Among plants, these strategies have so far been tested on the model *Arabidopsis
 
 This tutorial is step-by-step protocol for the task of discovering and annotating DNA motifs in clusters of upstream sequences for species supported on the RSAT::Plants server, which have been obtained mostly from Ensembl Plants (<http://plants.ensembl.org>, 6), but also include data from the JGI Genome Portal (<http://genome.jgi.doe.gov>) and the National Institute of Agrobiological Sciences in Japan (<http://barleyflc.dna.affrc.go.jp/bexdb/>). In addition, RSAT::Plants integrates footprintDB (<http://floresta.eead.csic.es/footprintdb>), a collection of position-specific scoring matrices (PSSM) representing transcription factor binding motifs (TFBM), as well as their cognate binding proteins (7), which can be used to annotate discovered motifs and to predict potentially binding transcription factors.
 
-2. Materials
-------------
+# Materials
 
 This protocol requires to dispose of:
 
@@ -32,14 +37,13 @@ This protocol requires to dispose of:
 
 -   A set of gene clusters from any of the species currently supported at RSAT::Plants ( <http://plants.rsat.eu>, see Note 1). 
 
-3. Methods
-----------
+# Methods
 
 The following protocol enumerates the steps required to discover DNA motifs, based on the over-representation of k-mers (oligonucleotides) and dyads (spaced pairs of oligonucleotides), in clusters of upstream sequences. The protocol comprises two stages, analyzing first co-expressed genes and then random clusters as a negative control (see Note 3). Only after both stages have been completed it is possible to objectively estimate the relevance of the results.
 
 The time required for carrying out the following steps is approximately one hour.
 
-### Collecting the full set of promoters for the genome of interest
+## Collecting the full set of promoters for the genome of interest
 
 Before the proper analysis of the gene cluster, we will retrieve the promoter sequences of all the genes of the organism of interest, which will serve below to estimate the background model.
 
@@ -55,7 +59,7 @@ Before the proper analysis of the gene cluster, we will retrieve the promoter se
 
 6.  Press 'GO' and wait until the result page is displayed (see Note 4). The last row of the results table should include an URL to the 'sequences' file, which must be saved. We will refer to this URL as '**all.fasta.URL**'. This FASTA-format file can also be stored as a local file on your computer, note it can be rather large.
 
-### Analyzing upstream sequences of co-expressed genes
+## Analyzing upstream sequences of co-expressed genes
 
 We will now retrieve the upstream sequences of a cluster of co-expressed genes, and use the tool *peak-motifs* to discover exceptional motifs in their promoters. The tool *peak-motifs* was initially conceived to discover motifs in ChIP-seq peaks, but it can also be used to analyze other sequence types, as illustrated here.
 
@@ -83,7 +87,7 @@ We will now retrieve the upstream sequences of a cluster of co-expressed genes, 
 
 On the result page, the section entitled *'Discovered motifs (with motif comparison)'* lists the discovered motifs, displays their sequence logos and their distribution along clustered sequences, in addition to top matches with the motif databases selected on **step 15**.
 
-### Negative control: random groups of genes
+## Negative control: random groups of genes
 
 In this section, we propose a procedure to obtain an empirical estimation of the rate of false positives, by discovering motifs in the promoters of genes picked up at random.
 
@@ -97,7 +101,7 @@ In this section, we propose a procedure to obtain an empirical estimation of the
 
 22.  Repeat steps 7-16. Save 'query genes' and 'sequences' files to local '**random.genes**' and '**random.fasta**' later on this protocol. 
 
-### Interpretation of results
+## Interpretation of results
 
 The last stage of the protocol is the interpretation of results, which requires having at hand results of both clusters of co-expressed genes and random clusters, which play the role of negative controls. 
 
@@ -107,8 +111,7 @@ The last stage of the protocol is the interpretation of results, which requires 
 
 See the protocol in reference (8) for further ways of validating motifs enriched in clustered sequences.
 
-4. References
--------------
+# References
 
 1. MA Beer, S Tavazoie (2004) Predicting gene expression from sequence. Cell 117: 185–198. https://pubmed.ncbi.nlm.nih.gov/15084257
 
@@ -127,10 +130,7 @@ See the protocol in reference (8) for further ways of validating motifs enriched
 8. B Contreras-Moreira, J Castro-Mondragon, C Rioualen, et al. (2016) RSAT::Plants: Motif Discovery within Clusters of Upstream Sequences in Plant Genomes. In Plant Synthetic Promoters: Methods and Protocols, edited by Hehl R. Methods in Molecular Biology, 1482:279-95. https://pubmed.ncbi.nlm.nih.gov/27557774
 
 
-
-
-5. Notes
---------
+# Notes
 
 [1] As gene models can change from one assembly to another it is important to use the right assembly version. If the assembly of interest it not available on RSAT::Plant server, please contact us.
 
