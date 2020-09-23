@@ -6,7 +6,7 @@ Motif discovery within clusters of upstream sequences in plant genomes
 - [Methods](#methods)
 	- [Collecting the full set of promoters for the genome of interest](#collecting-the-full-set-of-promoters-for-the-genome-of-interest)
 	- [Analyzing upstream sequences of co-expressed genes](#analyzing-upstream-sequences-of-co-expressed-genes)
-	- [Negative control: random groups of genes](#negative-control--random-groups-of-genes)
+	- [Negative control: random groups of genes](#negative-control-random-groups-of-genes)
 	- [Interpretation of results](#interpretation-of-results)
 - [References](#references)
 - [Notes](#notes)
