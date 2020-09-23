@@ -9,7 +9,7 @@ Motif discovery within clusters of upstream sequences in plant genomes
 	- [Negative control: random groups of genes](#negative-control--random-groups-of-genes)
 	- [Interpretation of results](#interpretation-of-results)
 - [References](#references)
- [Notes](#notes)
+- [Notes](#notes)
 
 This protocol explains step-by-step how to discover DNA motifs in regulatory regions of clusters of co-expressed gene in plants. It also explains how to control the significance of the result, and how to annotate the discovered motifs with putative binding fators. It uses the plant-dedicated mirror of the Regulatory Sequence Analysis Tools (RSAT, <http://plants.rsat.eu>) but it can be used on any RSAT mirror.
 
