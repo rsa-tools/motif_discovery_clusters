@@ -59,11 +59,11 @@ As described by Ksouri et al *(8)* we define four promoter intervals as follows 
 5.  We recommend to tick the option 'Mask repeats', as plant genomes are frequently repeat-rich. This option should not be used if you suspect the transcription factors of interest bind to repeated sequences.
 
 6.  Press 'GO' and wait until the result page is displayed (see Note 4). The last row of the results table should include an URL to the 'sequences' file, which must be saved. We will refer to this URL as '**all.fasta.URL**'. This FASTA-format file can also be stored as a local file on your computer, note it can be rather large.    
-<p align="left" width="100" height="70"> 
+<p align="center" width="100" height="70"> 
   <img src="figures/promoter_windows.png"/> 
+Figure 1.Delimitation of the upstream sequences with variable window sizes.
 </p>  
 
-**Figure 1.** Delimitation of the upstream sequences with variable window sizes.
 
 ## Analyzing upstream sequences of co-expressed genes
 
