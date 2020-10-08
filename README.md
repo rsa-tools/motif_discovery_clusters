@@ -54,12 +54,12 @@ Before the proper analysis of the gene cluster, we will retrieve the promoter se
 3.  Choose 'Genes -\> all'; this will retrieve all upstream sequences of the selected genome.
 
 4.  Set appropriate upstream bounds. Default values are -2000,-1. To replicate the work of Yu et al *(4)* these should be set to 'From' -1000 'To' +200. Without prior knowlege of the exact upstream region boundaries, the proximal upstream sequences may be defined as windows of variable length, each one examined separately (see Note 10).  
-As described by Ksouri et al *(8)* we define four promoter intervals as follows **Up 1**: [-1500bp, +200bp], **Up 2**: [-500bp, +200bp], **Up 3**: [-500bp, 0 bp], **Up 4**: [0bp, +200bp] (see Figure 1). <!--Najla, explica up1-up4-->
+As described by Ksouri et al *(8)* we define four promoter intervals as follows **Up 1**: [-1500bp, +200bp], **Up 2**: [-500bp, +200bp], **Up 3**: [-500bp, 0 bp], **Up 4**: [0bp, +200bp] (see **Figure 1**). <!--Najla, explica up1-up4-->
 
 5.  We recommend to tick the option 'Mask repeats', as plant genomes are frequently repeat-rich. This option should not be used if you suspect the transcription factors of interest bind to repeated sequences.
 
 6.  Press 'GO' and wait until the result page is displayed (see Note 4). The last row of the results table should include an URL to the 'sequences' file, which must be saved. We will refer to this URL as '**all.fasta.URL**'. This FASTA-format file can also be stored as a local file on your computer, note it can be rather large.    
-<p align="center" width="80" height="70"> 
+<p align="center" width="100" height="70"> 
   <img src="figures/promoter_windows.png"/>
 </p>
 
@@ -129,9 +129,11 @@ See the protocol in reference (8) for further ways of validating motifs enriched
 
 6. KL Howe, B Contreras-Moreira B, N De Silva, et al. (2019) Ensembl Genomes 2020-enabling non-vertebrate genomic research. Nucleic Acids Res. 48: D689–D695. https://pubmed.ncbi.nlm.nih.gov/31598706
 
-7. A Sebastian, B Contreras Moreira (2014) footprintDB: a database of transcription factors with annotated cis elements and binding interfaces. Bioinformatics 30: 258–265. https://pubmed.ncbi.nlm.nih.gov/24234003
+7. A Sebastian, B Contreras Moreira (2014) footprintDB: a database of transcription factors with annotated cis elements and binding interfaces. Bioinformatics 30: 258–265. https://pubmed.ncbi.nlm.nih.gov/24234003  
 
-8. B Contreras-Moreira, J Castro-Mondragon, C Rioualen, et al. (2016) RSAT::Plants: Motif Discovery within Clusters of Upstream Sequences in Plant Genomes. In Plant Synthetic Promoters: Methods and Protocols, edited by Hehl R. Methods in Molecular Biology, 1482:279-95. https://pubmed.ncbi.nlm.nih.gov/27557774
+8. N Ksouri, J A. Castro-Mondragón, F Montardit-Tardà, J van Helden, B Contreras-Moreira, Y Gogorcena (2020). Motif analysis in co-expression networks reveals regulatory elements in plants: The peach as a model. bioRxiv 2020.02.28.970137; doi: https://doi.org/10.1101/2020.02.28.970137 
+
+9. B Contreras-Moreira, J Castro-Mondragon, C Rioualen, et al. (2016) RSAT::Plants: Motif Discovery within Clusters of Upstream Sequences in Plant Genomes. In Plant Synthetic Promoters: Methods and Protocols, edited by Hehl R. Methods in Molecular Biology, 1482:279-95. https://pubmed.ncbi.nlm.nih.gov/27557774
 
 
 # Notes
