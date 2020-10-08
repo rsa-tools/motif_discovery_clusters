@@ -62,7 +62,7 @@ As described by Ksouri et al *(8)* we define four promoter intervals as follows 
 <p align="center" width="100" height="70"> 
   <img src="figures/promoter_windows.png"/> 
 </p>
-<b> <p align="center"Figure 1</b>. Delimitation of the upstream sequences with variable window sizes.</p>
+<b> <p align="center"Figure 1 </b> </p>. Delimitation of the upstream sequences with variable window sizes.
 
 ## Analyzing upstream sequences of co-expressed genes
 
