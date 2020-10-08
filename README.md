@@ -73,7 +73,7 @@ We will now retrieve the upstream sequences of a cluster of co-expressed genes, 
 
 8.  In the left menu of the RSAT server, click on 'retrieve sequence' to get a fresh form. Make sure that the option 'Genes -\> selection' is activated. Tick 'Mask repeats', and set the same size limits as for the whole collection of promoters: from -1000 to +200. Paste the list of IDs of your gene cluster (one gene ID per row).  
 
-In case of promoter region of variable length, redo the same step and make sure to set the corresponding bounds for each Up 1, Up 2, Up 3 and Up 4<!-- Najla -->
+    In case of promoter region of variable length, redo the same step and make sure to set the corresponding bounds for each Up 1, Up 2, Up 3 and Up 4<!-- Najla -->
 
 9.  Press 'GO' and wait a few seconds until the result page is displayed. Inspection of these sequences might reveal N-masked sequence stretches, which correspond to annotated repeats. Save both 'query genes' and 'sequences' files to local files on your computer, we will refer to them as '**cluster.genes**' and '**cluster.fasta**' later on this protocol.
 
