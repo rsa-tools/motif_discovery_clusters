@@ -60,7 +60,7 @@ As described by Ksouri et al *(8)* we define four promoter intervals as follows 
 
 6.  Press 'GO' and wait until the result page is displayed (see Note 4). The last row of the results table should include an URL to the 'sequences' file, which must be saved. We will refer to this URL as '**all.fasta.URL**'. This FASTA-format file can also be stored as a local file on your computer, note it can be rather large.  
 
-![Variable upstream sequences length](figures/promoter windows.png)
+![Variable upstream sequences length](figures/promoter_windows.png)
 
 ## Analyzing upstream sequences of co-expressed genes
 
