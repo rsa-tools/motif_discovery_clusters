@@ -54,15 +54,15 @@ Before the proper analysis of the gene cluster, we will retrieve the promoter se
 3.  Choose 'Genes -\> all'; this will retrieve all upstream sequences of the selected genome.
 
 4.  Set appropriate upstream bounds. Default values are -2000,-1. To replicate the work of Yu et al *(4)* these should be set to 'From' -1000 'To' +200. Without prior knowlege of the exact upstream region boundaries, the proximal upstream sequences may be defined as windows of variable length, each one examined separately (see Note 4).  
-As described by Ksouri et al *(8)* we define four promoter intervals as follows **Up 1**: [-1500bp, +200bp], **Up 2**: [-500bp, +200bp], **Up 3**: [-500bp, 0 bp], **Up 4**: [0bp, +200bp] (see **Figure 1**). <!--Najla, explica up1-up4-->
+As described by Ksouri et al *(8)* we define four promoter intervals as follows **Up 1**: [-1500bp, +200bp], **Up 2**: [-500bp, +200bp], **Up 3**: [-500bp, 0 bp] and **Up 4**: [0bp, +200bp] (see **Figure 1**). For each upstream strech, a background model of the same size is estimated. Tottay, 4 different background need to be generated. <!--Najla, explica up1-up4-->
 
 5.  We recommend to tick the option 'Mask repeats', as plant genomes are frequently repeat-rich. This option should not be used if you suspect the transcription factors of interest bind to repeated sequences.
 
 6.  Press 'GO' and wait until the result page is displayed (see Note 5). The last row of the results table should include an URL to the 'sequences' file, which must be saved. We will refer to this URL as '**all.fasta.URL**'. This FASTA-format file can also be stored as a local file on your computer, note it can be rather large.    
+
 <p align="center" width="100" height="70"> 
   <img src="figures/promoter_windows.png"/> </p>  
 <p align="center"> Figure 1. Delimitation of the upstream sequences with variable window sizes. </p>
-
 
 ## Analyzing upstream sequences of co-expressed genes
 
