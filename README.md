@@ -39,7 +39,7 @@ This protocol requires to dispose of:
 
 # Methods
 
-The following protocol enumerates the steps required to discover DNA motifs, based on the over-representation of k-mers (oligonucleotides) and dyads (spaced pairs of oligonucleotides), in clusters of upstream sequences. The protocol comprises two stages, analyzing first co-expressed genes and then random clusters as a negative control (see Note 3). Only after both stages have been completed it is possible to objectively estimate the relevance of the results.
+The following protocol enumerates the steps required to discover DNA motifs, based on the over-representation of k-mers (oligonucleotides) and dyads (spaced pairs of oligonucleotides), in clusters of upstream sequences (see Note 2). The protocol comprises two stages, analyzing first co-expressed genes and then random clusters as a negative control (see Note 3). Only after both stages have been completed it is possible to objectively estimate the relevance of the results.
 
 The time required for carrying out the following steps is approximately one hour.
 
@@ -53,23 +53,22 @@ Before the proper analysis of the gene cluster, we will retrieve the promoter se
 
 3.  Choose 'Genes -\> all'; this will retrieve all upstream sequences of the selected genome.
 
-4.  Set appropriate upstream bounds. Default values are -2000,-1. To replicate the work of Yu et al *(4)* these should be set to 'From' -1000 'To' +200. Without prior knowlege of the exact upstream region boundaries, the proximal upstream sequences may be defined as windows of variable length, each one examined separately (see Note 10).  
+4.  Set appropriate upstream bounds. Default values are -2000,-1. To replicate the work of Yu et al *(4)* these should be set to 'From' -1000 'To' +200. Without prior knowlege of the exact upstream region boundaries, the proximal upstream sequences may be defined as windows of variable length, each one examined separately (see Note 4).  
 As described by Ksouri et al *(8)* we define four promoter intervals as follows **Up 1**: [-1500bp, +200bp], **Up 2**: [-500bp, +200bp], **Up 3**: [-500bp, 0 bp], **Up 4**: [0bp, +200bp] (see **Figure 1**). <!--Najla, explica up1-up4-->
 
 5.  We recommend to tick the option 'Mask repeats', as plant genomes are frequently repeat-rich. This option should not be used if you suspect the transcription factors of interest bind to repeated sequences.
 
-6.  Press 'GO' and wait until the result page is displayed (see Note 4). The last row of the results table should include an URL to the 'sequences' file, which must be saved. We will refer to this URL as '**all.fasta.URL**'. This FASTA-format file can also be stored as a local file on your computer, note it can be rather large.    
+6.  Press 'GO' and wait until the result page is displayed (see Note 5). The last row of the results table should include an URL to the 'sequences' file, which must be saved. We will refer to this URL as '**all.fasta.URL**'. This FASTA-format file can also be stored as a local file on your computer, note it can be rather large.    
 <p align="center" width="100" height="70"> 
   <img src="figures/promoter_windows.png"/> </p>  
-<p align="center"> Figure 1.Delimitation of the upstream sequences with variable window sizes. </p>
-
+<p align="center"> Figure 1. Delimitation of the upstream sequences with variable window sizes. </p>
 
 
 ## Analyzing upstream sequences of co-expressed genes
 
 We will now retrieve the upstream sequences of a cluster of co-expressed genes, and use the tool *peak-motifs* to discover exceptional motifs in their promoters. The tool *peak-motifs* was initially conceived to discover motifs in ChIP-seq peaks, but it can also be used to analyze other sequence types, as illustrated here.
 
-7.  Choose a cluster, copy the corresponding gene IDs and paste them in a new text file, that you will store on your computer. Insert newline characters between genes, see Note 5.
+7.  Choose a cluster, copy the corresponding gene IDs and paste them in a new text file, that you will store on your computer. Insert newline characters between genes, see Note 6.
 
 8.  In the left menu of the RSAT server, click on 'retrieve sequence' to get a fresh form. Make sure that the option 'Genes -\> selection' is activated. Tick 'Mask repeats', and set the same size limits as for the whole collection of promoters: from -1000 to +200. Paste the list of IDs of your gene cluster (one gene ID per row). <!-- Najla -->
 
@@ -83,9 +82,9 @@ We will now retrieve the upstream sequences of a cluster of co-expressed genes, 
 
 13.  Click on 'Reduce peak sequences' and set an appropriate value to **Cut peak sequences +/-**. Suppress the default value (500) and leave the field blank, to avoid having the sequences clipped to 1Kb (by default, peak-motifs clips the peaks to 500bp on each side of the peak centers).
 
-14.  Click on 'Motif discovery parameters'. Select two algorithms: 'Discover over-represented words' (**oligo-analysis**) and 'Discover over-represented spaced word pairs' (**dyad-analysis**). Uncheck the program **position-analysis** (see Note 6). Set 'Origin' to 'end' and 'Offset' to -200 (see Note 7).<!-- Najla -->
+14.  Click on 'Motif discovery parameters'. Select two algorithms: 'Discover over-represented words' (**oligo-analysis**) and 'Discover over-represented spaced word pairs' (**dyad-analysis**). Uncheck the program **position-analysis** (see Note 7). Set 'Origin' to 'end' and 'Offset' to -200 (see Note 8).<!-- Najla -->
 
-15.  Click on 'Compare discovered motifs with databases' and select appropriate databases which will be used to annotate any found motifs. For plant promoters, we recommend to check '*footprintDB-plants*', but you can also check other databases such as '*Athamap*', '*ArabidopsisPBM*' and '*JASPAR plants*' (see Note 8). You can also upload your own collection of DNA motifs in TRANSFAC format.
+15.  Click on 'Compare discovered motifs with databases' and select appropriate databases which will be used to annotate any found motifs. For plant promoters, we recommend to check '*footprintDB-plants*', but you can also check other databases such as '*Athamap*', '*ArabidopsisPBM*' and '*JASPAR plants*' (see Note 9). You can also upload your own collection of DNA motifs in TRANSFAC format.
 
 16. Select **email** output and type your delivery address as these are costly jobs and your connection to the server might get interrupted otherwise. Press 'GO'.
 
@@ -101,7 +100,7 @@ In this section, we propose a procedure to obtain an empirical estimation of the
 
 19.  Choose 'Organism'.
 
-20.  Set 'Number of genes' to the size of the cluster used above. For convenience, in this tutorial only one random group is generated (the default), but this utility can generate several random groups in one go (see Note 9).
+20.  Set 'Number of genes' to the size of the cluster used above. For convenience, in this tutorial only one random group is generated (the default), but this utility can generate several random groups in one go (see Note 10).
 
 21.  Press 'GO' and click the 'Next step' button 'retrieve sequences' at the bottom of the result page. In the retrieve-seq form, set the other parameters as above: from -1000 to +200, check the 'Mask repeats' option. <!-- Najla -->
 
@@ -115,7 +114,7 @@ The last stage of the protocol is the interpretation of results, which requires 
 
 **Figure 2** shows two **distributions of motif significance**. The most significant motif produced by both *oligo-analysis* and *dyad-analysis* (black bar) is shown next to the significance of motifs discovered in random clusters (grey bars). The motif on the left is not more significant than those of random gene sets of the same size, and should not be considered a reliable prediction. In contrast, the motif on the right (E2F) clearly supersedes those of random clusters. For this reason, it can be considered a promising prediction. 
 
-See the protocol in reference (8) for further ways of validating motifs enriched in clustered sequences.
+See the protocol in reference (9) for further ways of validating motifs enriched in clustered sequences.
 
 # References
 
@@ -144,16 +143,19 @@ See the protocol in reference (8) for further ways of validating motifs enriched
 
 [2] Smaller clusters are left out of the analysis, as the statistical approaches in this protocol require at least ~10-15 sequences. 
 
-[3] A crucial parameter to evaluate the results of motif discovery is to estimate the rate of false positives (FP). RSAT programs compute a significance score, which is the minus log of the expected number of false positives. For example, a motif associated with a significance of 1 should be considered as poorly significant, since on average we would expect 0.1 false positives, i.e. one FP every 10 random trials. In contrast, a significance of e.g. 16 is very promising, since on average such a result would be expected every 10E-16 random trials. However, the theoretical significance relies on the correctness of the background model (computed here as k-mer and dyad frequencies in the whole set of promoters). In some cases, sets of plant promoters can discard from the theoretical model, due to heterogeneity of the input (e.g. inclusion of repetitive sequences). The negative control consists in measuring the significance obtained by submitting a random selection of promoters from the organism of interest (maize in the example). Although each of these genes is likely to be regulated by one or more transcription factors (and its promoter should contain corresponding binding sites), in principle the random set as a whole should not be co-regulated, so that the elements would differ from gene to gene, and there should thus be no over-represented motif in their promoters.
 
-[4] Should the connection to the server interrupt it might be safer to go back and choose 'email' as delivery option.
+[3] A crucial parameter to evaluate the results of motif discovery is to estimate the rate of false positives (FP). RSAT programs compute a significance score, which is the minus log of the expected number of false positives. For example, a motif associated with a significance of 1 should be considered as poorly significant, since on average we would expect 0.1 false positives, i.e. one FP every 10 random trials. In contrast, a significance of e.g. 16 is very promising, since on average such a result would be expected every 10E-16 random trials. However, the theoretical significance relies on the correctness of the background model (computed here as k-mer and dyad frequencies in the whole set of promoters). In some cases, sets of plant promoters can discard from the theoretical model, due to heterogeneity of the input (e.g. inclusion of repetitive sequences). The negative control consists in measuring the significance obtained by submitting a random selection of promoters from the organism of interest (maize in the example). Although each of these genes is likely to be regulated by one or more transcription factors (and its promoter should contain corresponding binding sites), in principle the random set as a whole should not be co-regulated, so that the elements would differ from gene to gene, and there should thus be no over-represented motif in their promoters.  
 
-[5] It is crucial to have one gene ID per row for submitting queries to retrieve-seq, because only the first word of each row is considered as a query.
+[4] The genomic delimitation of the proximal promoter region is far from being a straightforward task. Without prior knowledge about the exact boundaries, analyzing a promoter region of variable length would be a good alternative to reveal the most informative proximal promoter window and to get more comprehensive picture of the complex regulatory code.
 
-[6] This program is generally relevant when analyzing sets containing a large number of sequences such as ChIP-seq peaks or genome-wide promoter sets.
+[5] Should the connection to the server interrupt it might be safer to go back and choose 'email' as delivery option.
 
-[7] The option *'Origin'* indicates the reference position relative to each sequence (start, center or end). When this option is set to 'end', the coordinates are computed relative to the end of the sequence, with negative values indicating upstream location. The option *'Offset'* enables to shift the reference point by a given number. 
+[6] It is crucial to have one gene ID per row for submitting queries to retrieve-seq, because only the first word of each row is considered as a query.
 
-[8] Plant transcription databases are unfortunately still very fragmentary, so one might be tempted to check more complete collections such as *footprintDB* or *JASPAR core all*. However, the results should be interpreted with caution, because there is no conservation of cis-regulation between Plants and other Kingdoms of the tree of life.
+[7] This program is generally relevant when analyzing sets containing a large number of sequences such as ChIP-seq peaks or genome-wide promoter sets.
 
-[9] Clearly, more than one random cluster should be evaluated, as suggested on **Figure 2**, where the results of up to 50 random groups are displayed.
+[8] The option *'Origin'* indicates the reference position relative to each sequence (start, center or end). When this option is set to 'end', the coordinates are computed relative to the end of the sequence, with negative values indicating upstream location. The option *'Offset'* enables to shift the reference point by a given number. 
+
+[9] Plant transcription databases are unfortunately still very fragmentary, so one might be tempted to check more complete collections such as *footprintDB* or *JASPAR core all*. However, the results should be interpreted with caution, because there is no conservation of cis-regulation between Plants and other Kingdoms of the tree of life.
+
+[10] Clearly, more than one random cluster should be evaluated, as suggested on **Figure 2**, where the results of up to 50 random groups are displayed.
