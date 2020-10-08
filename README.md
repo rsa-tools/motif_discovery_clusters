@@ -53,7 +53,8 @@ Before the proper analysis of the gene cluster, we will retrieve the promoter se
 
 3.  Choose 'Genes -\> all'; this will retrieve all upstream sequences of the selected genome.
 
-4.  Set appropriate upstream bounds. Default values are -2000,-1. To replicate the work of Yu et al *(4)* these should be set to 'From' -1000 'To' +200. Without prior knowlege of the exact upstream region boundaries, the proximal upstream sequences may be defined as windows of variable length, each one examined separately (see Note 4).  
+4.  Set appropriate upstream bounds. Default values are -2000,-1. To replicate the work of Yu et al *(4)* these should be set to 'From' -1000 'To' +200. 
+    Without prior knowlege of the exact upstream region boundaries, the proximal upstream sequences may be defined as windows of variable length, each one examined separately   (see Note 4).  
 As described by Ksouri et al *(8)*, we define four promoter intervals as follows **Up 1**: ['From' -1500 bp 'To' +200 bp], **Up 2**: ['From' -500 bp 'To' +200 bp], **Up 3**: ['From' -500 bp 'To' 0 bp] and **Up 4**: ['From' 0 bp 'To' +200 bp] (see **Figure 1**). 
 For each upstream strech, a background model of the same size is estimated and totally 4 different backgrounds are generated. <!--Najla, explica up1-up4-->
 
