@@ -58,7 +58,9 @@ As described by Ksouri et al *(8)* we define four promoter intervals as follows 
 
 5.  We recommend to tick the option 'Mask repeats', as plant genomes are frequently repeat-rich. This option should not be used if you suspect the transcription factors of interest bind to repeated sequences.
 
-6.  Press 'GO' and wait until the result page is displayed (see Note 4). The last row of the results table should include an URL to the 'sequences' file, which must be saved. We will refer to this URL as '**all.fasta.URL**'. This FASTA-format file can also be stored as a local file on your computer, note it can be rather large.
+6.  Press 'GO' and wait until the result page is displayed (see Note 4). The last row of the results table should include an URL to the 'sequences' file, which must be saved. We will refer to this URL as '**all.fasta.URL**'. This FASTA-format file can also be stored as a local file on your computer, note it can be rather large.  
+
+![Example histograms of significance](figures/example_sig.png)
 
 ## Analyzing upstream sequences of co-expressed genes
 
@@ -108,7 +110,7 @@ The last stage of the protocol is the interpretation of results, which requires 
 
 ![Example histograms of significance](figures/example_sig.png)
 
-**Figure 1** shows two **distributions of motif significance**. The most significant motif produced by both *oligo-analysis* and *dyad-analysis* (black bar) is shown next to the significance of motifs discovered in random clusters (grey bars). The motif on the left is not more significant than those of random gene sets of the same size, and should not be considered a reliable prediction. In contrast, the motif on the right (E2F) clearly supersedes those of random clusters. For this reason, it can be considered a promising prediction. 
+**Figure 2** shows two **distributions of motif significance**. The most significant motif produced by both *oligo-analysis* and *dyad-analysis* (black bar) is shown next to the significance of motifs discovered in random clusters (grey bars). The motif on the left is not more significant than those of random gene sets of the same size, and should not be considered a reliable prediction. In contrast, the motif on the right (E2F) clearly supersedes those of random clusters. For this reason, it can be considered a promising prediction. 
 
 See the protocol in reference (8) for further ways of validating motifs enriched in clustered sequences.
 
@@ -149,4 +151,4 @@ See the protocol in reference (8) for further ways of validating motifs enriched
 
 [8] Plant transcription databases are unfortunately still very fragmentary, so one might be tempted to check more complete collections such as *footprintDB* or *JASPAR core all*. However, the results should be interpreted with caution, because there is no conservation of cis-regulation between Plants and other Kingdoms of the tree of life.
 
-[9] Clearly, more than one random cluster should be evaluated, as suggested on **Figure 1**, where the results of up to 50 random groups are displayed.
+[9] Clearly, more than one random cluster should be evaluated, as suggested on **Figure 2**, where the results of up to 50 random groups are displayed.
