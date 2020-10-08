@@ -54,6 +54,7 @@ Before the proper analysis of the gene cluster, we will retrieve the promoter se
 3.  Choose 'Genes -\> all'; this will retrieve all upstream sequences of the selected genome.
 
 4.  Set appropriate upstream bounds. Default values are -2000,-1. To replicate the work of Yu et al *(4)* these should be set to 'From' -1000 'To' +200. 
+
     Without prior knowlege of the exact upstream region boundaries, the proximal upstream sequences may be defined as windows of variable length, each one examined separately   (see Note 4).  
 As described by Ksouri et al *(8)*, we define four promoter intervals as follows **Up 1**: ['From' -1500 bp 'To' +200 bp], **Up 2**: ['From' -500 bp 'To' +200 bp], **Up 3**: ['From' -500 bp 'To' 0 bp] and **Up 4**: ['From' 0 bp 'To' +200 bp] (see **Figure 1**). 
 For each upstream strech, a background model of the same size is estimated and totally 4 different backgrounds are generated. <!--Najla, explica up1-up4-->
@@ -74,7 +75,7 @@ We will now retrieve the upstream sequences of a cluster of co-expressed genes, 
 
 8.  In the left menu of the RSAT server, click on 'retrieve sequence' to get a fresh form. Make sure that the option 'Genes -\> selection' is activated. Tick 'Mask repeats', and set the same size limits as for the whole collection of promoters: from -1000 to +200. Paste the list of IDs of your gene cluster (one gene ID per row).  
 
-    In case of promoter region of variable length, redo the same step and make sure to set the corresponding bounds for each Up 1, Up 2, Up 3 and Up 4<!-- Najla -->
+    In case of promoter region of variable length, redo the same step and make sure to set the corresponding bounds for **Up 1**, **Up 2**, **Up 3** and **Up 4**<!-- Najla -->
 
 9.  Press 'GO' and wait a few seconds until the result page is displayed. Inspection of these sequences might reveal N-masked sequence stretches, which correspond to annotated repeats. Save both 'query genes' and 'sequences' files to local files on your computer, we will refer to them as '**cluster.genes**' and '**cluster.fasta**' later on this protocol.
 
