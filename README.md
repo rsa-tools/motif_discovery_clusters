@@ -53,9 +53,7 @@ Before the proper analysis of the gene cluster, we will retrieve the promoter se
 
 3.  Choose 'Genes -\> all'; this will retrieve all upstream sequences of the selected genome.
 
-4.  Set appropriate upstream bounds. Default values are -2000,-1. To replicate the work of Yu et al *(4)* these should be set to 'From' -1000 'To' +200.   
-
-    Without prior knowledge of the upstream region boundaries, the proximal promoter may be defined as windows of variable length, where each one is examined separately (see Note X). As described by Ksouri et al *(8)*  <!--Najla, explica up1-up4-->
+4.  Set appropriate upstream bounds. Default values are -2000,-1. To replicate the work of Yu et al *(4)* these should be set to 'From' -1000 'To' +200. Without prior knowlege of the upstream region boundaries, the proximal promoter may be defined as different windows of variable length, each examined separately (see Note X) <!--Najla, explica up1-up4-->
 
 5.  We recommend to tick the option 'Mask repeats', as plant genomes are frequently repeat-rich. This option should not be used if you suspect the transcription factors of interest bind to repeated sequences.
 
