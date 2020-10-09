@@ -61,7 +61,7 @@ Before the proper analysis of the gene cluster, we will retrieve the promoter se
 5.  We recommend to tick the option 'Mask repeats', as plant genomes are frequently repeat-rich. This option should not be used if you suspect the transcription factors of interest bind to repeated sequences.
 
 6.  Press 'GO' and wait until the result page is displayed (see Note 5). The last row of the results table should include an URL to the 'sequences' file, which must be saved. We will refer to this URL as '**all.fasta.URL**'.  
-For sake of clarity, when analyzing various upstream windows (**Up 1** to **Up 4**), we refer to the background sequences URL as **all-Up1..Up4.fasta.URL**. These FASTA-format files can also be stored as a local file on your computer, note it can be rather large.   
+For sake of clarity, when analyzing various upstream windows (**Up 1** to **Up 4**), we refer to the background sequences URL as **all-Up1..Up4.fasta.URL**. <!-- Najla -->These FASTA-format files can also be stored as a local file on your computer, note it can be rather large.   
 
   ***  
     
@@ -80,7 +80,7 @@ We will now retrieve the upstream sequences of a cluster of co-expressed genes, 
     In case of promoter regions of variable length, redo the same step and make sure to set the corresponding bounds for respectively **Up 1**, **Up 2**, **Up 3** and **Up 4**<!-- Najla -->
 
 9.  Press 'GO' and wait a few seconds until the result page is displayed. Inspection of these sequences might reveal N-masked sequence stretches, which correspond to annotated repeats. Save both 'query genes' and 'sequences' files to local files on your computer, we will refer to them as '**cluster.genes**' and '**cluster.fasta**' later on this protocol.  
-As described previously, for the upstream boundaries **Up 1** to **Up 4**, we refer to the cluster sequences as **Up1..Up4.cluster.fasta**
+As described previously, for the upstream boundaries **Up 1** to **Up 4**, we refer to the cluster sequences as **Up1..Up4.cluster.fasta** <!-- Najla -->
 
 10.  Press the 'peak-motifs' button. **Peak sequences** are pre-filled with the cluster sequences selected on steps 7-8.
 
@@ -111,7 +111,7 @@ In this section, we propose a procedure to obtain an empirical estimation of the
 
 20.  Set 'Number of genes' to the size of the cluster used above. For convenience, in this tutorial only one random group is generated (the default), but this utility can generate several random groups in one go (see Note 10).
 
-21.  Press 'GO' and click the 'Next step' button 'retrieve sequences' at the bottom of the result page. In the retrieve-seq form, set the other parameters as above: from -1000 to +200, check the 'Mask repeats' option. <!-- Najla -->
+21.  Press 'GO' and click the 'Next step' button 'retrieve sequences' at the bottom of the result page. In the retrieve-seq form, set the other parameters as above: from -1000 to +200, check the 'Mask repeats' option. To get reliable results, it is crucial to use the same random group of genes along the upstream windows **Up 1**, **Up2**, **Up3** and **Up 4** (the same list of genes). <!-- Najla -->
 
 22.  Repeat steps 7-16. Save 'query genes' and 'sequences' files to local '**random.genes**' and '**random.fasta**' later on this protocol. 
 
