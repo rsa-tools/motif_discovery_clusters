@@ -91,7 +91,7 @@ As described previously, for the upstream boundaries **Up 1** to **Up 4**, we re
 13.  Click on 'Reduce peak sequences' and set an appropriate value to **Cut peak sequences +/-**. Suppress the default value (500) and leave the field blank, to avoid having the sequences clipped to 1Kb (by default, peak-motifs clips the peaks to 500bp on each side of the peak centers).
 
 14.  Click on 'Motif discovery parameters'. Select two algorithms: 'Discover over-represented words' (**oligo-analysis**) and 'Discover over-represented spaced word pairs' (**dyad-analysis**). Uncheck the program **position-analysis** (see Note 7). Set 'Origin' to 'end' and 'Offset' to -200 (see Note 8).  
-For **Up 1** to **Up 4**, we keep the 'Offset' default value (0). <!-- Najla -->
+For **Up 1** to **Up 4**, we keep the 'Offset' default value set to 0. <!-- Najla -->
 
 15.  Click on 'Compare discovered motifs with databases' and select appropriate databases which will be used to annotate any found motifs. For plant promoters, we recommend to check '*footprintDB-plants*', but you can also check other databases such as '*Athamap*', '*ArabidopsisPBM*' and '*JASPAR plants*' (see Note 9). You can also upload your own collection of DNA motifs in TRANSFAC format.
 
