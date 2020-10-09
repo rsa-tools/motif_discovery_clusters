@@ -62,10 +62,9 @@ For each upstream strech, a background model of the same size is estimated and t
 5.  We recommend to tick the option 'Mask repeats', as plant genomes are frequently repeat-rich. This option should not be used if you suspect the transcription factors of interest bind to repeated sequences.
 
 6.  Press 'GO' and wait until the result page is displayed (see Note 5). The last row of the results table should include an URL to the 'sequences' file, which must be saved. We will refer to this URL as '**all.fasta.URL**'.  
-For sake of clarity, when analyzing various upstream windows (Up 1.. Up 4), we refer to the sequences URL as **all-Up1..Up4.fasta.URL**. These FASTA-format files can also be stored as a local file on your computer, note it can be rather large.    
-
-
-
+For sake of clarity, when analyzing various upstream windows (**Up 1** to **Up 4**), we refer to the background sequences URL as **all-Up1..Up4.fasta.URL**. These FASTA-format files can also be stored as a local file on your computer, note it can be rather large.  
+  
+    
 <p align="center" width="100" height="70"> 
   <img src="figures/promoter_windows.png"/> </p>  
 <p align="center"> Figure 1. Delimitation of the upstream sequences with variable window sizes. </p>
