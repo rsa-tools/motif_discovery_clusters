@@ -77,7 +77,7 @@ We will now retrieve the upstream sequences of a cluster of co-expressed genes, 
 
 8.  In the left menu of the RSAT server, click on 'retrieve sequence' to get a fresh form. Make sure that the option 'Genes -\> selection' is activated. Tick 'Mask repeats', and set the same size limits as for the whole collection of promoters: from -1000 to +200. Paste the list of IDs of your gene cluster (one gene ID per row).  
 
-    In case of promoter regions of variable length, redo the same step and make sure to set the corresponding bounds for **Up 1**, **Up 2**, **Up 3** and **Up 4**<!-- Najla -->
+    In case of promoter regions of variable length, redo the same step and make sure to set the corresponding bounds for respectively **Up 1**, **Up 2**, **Up 3** and **Up 4**<!-- Najla -->
 
 9.  Press 'GO' and wait a few seconds until the result page is displayed. Inspection of these sequences might reveal N-masked sequence stretches, which correspond to annotated repeats. Save both 'query genes' and 'sequences' files to local files on your computer, we will refer to them as '**cluster.genes**' and '**cluster.fasta**' later on this protocol.  
 As described previously, for the upstream boundaries **Up 1** to **Up 4**, we refer to the cluster sequences as **Up1..Up4.cluster.fasta**
@@ -90,7 +90,8 @@ As described previously, for the upstream boundaries **Up 1** to **Up 4**, we re
 
 13.  Click on 'Reduce peak sequences' and set an appropriate value to **Cut peak sequences +/-**. Suppress the default value (500) and leave the field blank, to avoid having the sequences clipped to 1Kb (by default, peak-motifs clips the peaks to 500bp on each side of the peak centers).
 
-14.  Click on 'Motif discovery parameters'. Select two algorithms: 'Discover over-represented words' (**oligo-analysis**) and 'Discover over-represented spaced word pairs' (**dyad-analysis**). Uncheck the program **position-analysis** (see Note 7). Set 'Origin' to 'end' and 'Offset' to -200 (see Note 8).<!-- Najla -->
+14.  Click on 'Motif discovery parameters'. Select two algorithms: 'Discover over-represented words' (**oligo-analysis**) and 'Discover over-represented spaced word pairs' (**dyad-analysis**). Uncheck the program **position-analysis** (see Note 7). Set 'Origin' to 'end' and 'Offset' to -200 (see Note 8).  
+For **Up 1** to **Up 4**, we keep the 'Offset' default value (0). <!-- Najla -->
 
 15.  Click on 'Compare discovered motifs with databases' and select appropriate databases which will be used to annotate any found motifs. For plant promoters, we recommend to check '*footprintDB-plants*', but you can also check other databases such as '*Athamap*', '*ArabidopsisPBM*' and '*JASPAR plants*' (see Note 9). You can also upload your own collection of DNA motifs in TRANSFAC format.
 
