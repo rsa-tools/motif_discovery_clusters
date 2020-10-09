@@ -75,7 +75,7 @@ We will now retrieve the upstream sequences of a cluster of co-expressed genes, 
 
 8.  In the left menu of the RSAT server, click on 'retrieve sequence' to get a fresh form. Make sure that the option 'Genes -\> selection' is activated. Tick 'Mask repeats', and set the same size limits as for the whole collection of promoters: from -1000 to +200. Paste the list of IDs of your gene cluster (one gene ID per row).  
 
-    In case of promoter region of variable length, redo the same step and make sure to set the corresponding bounds for **Up 1**, **Up 2**, **Up 3** and **Up 4**<!-- Najla -->
+    In case of promoter regions of variable length, redo the same step and make sure to set the corresponding bounds for **Up 1**, **Up 2**, **Up 3** and **Up 4**<!-- Najla -->
 
 9.  Press 'GO' and wait a few seconds until the result page is displayed. Inspection of these sequences might reveal N-masked sequence stretches, which correspond to annotated repeats. Save both 'query genes' and 'sequences' files to local files on your computer, we will refer to them as '**cluster.genes**' and '**cluster.fasta**' later on this protocol.
 
@@ -157,7 +157,7 @@ See the protocol in reference (9) for further ways of validating motifs enriched
 
 [6] It is crucial to have one gene ID per row for submitting queries to retrieve-seq, because only the first word of each row is considered as a query.
 
-[7] This program is generally relevant when analyzing sets containing a large number of sequences such as ChIP-seq peaks or genome-wide promoter sets.
+[7] This program is generally relevant when analyzing sets containing a large number of sequences such as ChIP-seq peaks or genome-wide promoter sets. Besides, position-analysis and local-word-analysis will not run if a control set is provided.
 
 [8] The option *'Origin'* indicates the reference position relative to each sequence (start, center or end). When this option is set to 'end', the coordinates are computed relative to the end of the sequence, with negative values indicating upstream location. The option *'Offset'* enables to shift the reference point by a given number. 
 
