@@ -11,7 +11,9 @@ Motif discovery within clusters of upstream sequences in plant genomes
 - [References](#references)
 - [Notes](#notes)
 
-This protocol explains step-by-step how to discover DNA motifs in regulatory regions of clusters of co-expressed gene in plants. It also explains how to control the significance of the result, and how to annotate the discovered motifs with putative binding fators. It uses the plant-dedicated mirror of the Regulatory Sequence Analysis Tools (RSAT, <http://plants.rsat.eu>) but it can be used on any RSAT mirror.
+This protocol explains step-by-step how to discover on your Web browser DNA motifs in regulatory regions of clusters of co-expressed gene in plants. It also explains how to control the significance of the result, and how to annotate the discovered motifs with putative binding fators. It uses the plant-dedicated mirror of the Regulatory Sequence Analysis Tools (RSAT, <http://plants.rsat.eu>) but it can be used on any RSAT mirror.
+
+See <https://eead-csic-compbio.github.io/coexpression_motif_discovery/peach/Tutorial.html> for a command-line protocol.
 
 # Introduction
 
@@ -27,7 +29,8 @@ Among plants, these strategies have so far been tested on the model *Arabidopsis
 
 -   Upstream regions, defined by annotated gene coordinates, are also of variable length.
 
-This tutorial is step-by-step protocol for the task of discovering and annotating DNA motifs in clusters of upstream sequences for species supported on the RSAT::Plants server, which have been obtained mostly from Ensembl Plants (<http://plants.ensembl.org>, 6), but also include data from the JGI Genome Portal (<http://genome.jgi.doe.gov>) and the National Institute of Agrobiological Sciences in Japan (<http://barleyflc.dna.affrc.go.jp/bexdb/>). In addition, RSAT::Plants integrates footprintDB (<http://floresta.eead.csic.es/footprintdb>), a collection of position-specific scoring matrices (PSSM) representing transcription factor binding motifs (TFBM), as well as their cognate binding proteins (7), which can be used to annotate discovered motifs and to predict potentially binding transcription factors.
+This tutorial is step-by-step protocol for the task of discovering and annotating DNA motifs in clusters of upstream sequences for species supported on the RSAT::Plants server, which have been obtained mostly from Ensembl Plants (<http://plants.ensembl.org>, 6), but also include data from resources such as the JGI Genome Portal (<http://genome.jgi.doe.gov>). <!-- and the National Institute of Agrobiological Sciences in Japan (<http://barleyflc.dna.affrc.go.jp/bexdb/>).--> 
+In addition, RSAT::Plants integrates footprintDB (<https://footprintdb.eead.csic.es>), a collection of position-specific scoring matrices (PSSM) representing transcription factor binding motifs (TFBM), as well as their cognate binding proteins (7), which can be used to annotate discovered motifs and to predict potentially binding transcription factors.
 
 # Materials
 
@@ -137,11 +140,11 @@ See the protocol in reference (9) for further ways of validating motifs enriched
 
 5. T Schmidt, J Heslop-Harrison (1998) Genomes, genes and junk: the large-scale organization of plant chromosomes. Trends in Plant Science 3: 195–199. https://doi.org/10.1016/S1360-1385(98)01223-0
 
-6. KL Howe, B Contreras-Moreira B, N De Silva, et al. (2019) Ensembl Genomes 2020-enabling non-vertebrate genomic research. Nucleic Acids Res. 48: D689–D695. https://pubmed.ncbi.nlm.nih.gov/31598706
+6. AD Yates, J Allen, RM Amode et al (2022) Ensembl Genomes 2022: an expanding genome resource for non-vertebrates. Nucleic Acids Research 50(D1): D996–D1003. https://doi.org/10.1093/nar/gkab1007
 
 7. A Sebastian, B Contreras Moreira (2014) footprintDB: a database of transcription factors with annotated cis elements and binding interfaces. Bioinformatics 30: 258–265. https://pubmed.ncbi.nlm.nih.gov/24234003  
 
-8. N Ksouri, J A. Castro-Mondragón, F Montardit-Tardà, J van Helden, B Contreras-Moreira, Y Gogorcena (2020). Motif analysis in co-expression networks reveals regulatory elements in plants: The peach as a model. bioRxiv 2020.02.28.970137; doi: https://doi.org/10.1101/2020.02.28.970137 
+8. N Ksouri, J A. Castro-Mondragón, F Montardit-Tardà, J van Helden, B Contreras-Moreira, Y Gogorcena (2021) Tuning promoter boundaries improves regulatory motif discovery in nonmodel plants: the peach example, Plant Physiology 185(3): 1242–1258. https://doi.org/10.1093/plphys/kiaa091
 
 9. B Contreras-Moreira, J Castro-Mondragon, C Rioualen, et al. (2016) RSAT::Plants: Motif Discovery within Clusters of Upstream Sequences in Plant Genomes. In Plant Synthetic Promoters: Methods and Protocols, edited by Hehl R. Methods in Molecular Biology, 1482:279-95. https://pubmed.ncbi.nlm.nih.gov/27557774
 
